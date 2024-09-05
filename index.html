@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>🚀</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .scene {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .atmosphere {
+        height: 80%;
+        background: rgb(2, 0, 36);
+        background: linear-gradient(
+          180deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(9, 9, 121, 1) 25%,
+          rgba(0, 212, 255, 1) 99%
+        );
+        overflow: hidden;
+        position: relative;
+      }
+      .ground {
+        height: 20%;
+        background-color: springgreen; /* Example background color */
+      }
+      .rocket {
+        position: absolute;
+        font-size: 5em;
+        bottom: 20px;
+        left: 50%;
+        animation: fly 3s linear infinite;
+        /* animation-play-state: paused; */
+        animation-play-state: running;
+      }
+      #start-animation {
+      }
+      #start-animation:checked + div.atmosphere {
+        background-color: red;
+      }
+
+      input[type="checkbox"]:checked ~ .rocket {
+      }
+
+      @keyframes fly {
+        0% {
+          bottom: 20px;
+          left: 50%;
+          transform: rotate(-45deg);
+        }
+        100% {
+          bottom: 100%;
+          left: 50%;
+          transform: rotate(-45deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <input type="checkbox" id="start-animation" />
+    <label for="start-animation">
+      <div class="scene">
+        <div class="atmosphere"></div>
+        <div class="ground"></div>
+        <div class="rocket">🚀</div>
+      </div>
+    </label>
+  </body>
+</html>
