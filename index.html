@@ -3,6 +3,7 @@
   <head>
     <title>🚀</title>
     <style>
+      /* add star animation, stars should be lighter in the lower atmosphere and brighter in space */
       body {
         margin: 0;
         padding: 0;
@@ -20,7 +21,6 @@
 
       .atmosphere {
         height: 80%;
-        background: rgb(2, 0, 36);
         background: linear-gradient(
           180deg,
           rgba(2, 0, 36, 1) 0%,
@@ -39,17 +39,20 @@
         font-size: 5em;
         bottom: 20px;
         left: 50%;
+        transform: rotate(-45deg);
         animation: fly 3s linear infinite;
-        /* animation-play-state: paused; */
-        animation-play-state: running;
+        animation-play-state: paused;
       }
-      #start-animation {
+      #go {
+        display: none;
       }
-      #start-animation:checked + div.atmosphere {
-        background-color: red;
+      #go:checked ~ label .atmosphere {
+        background: red;
       }
 
-      input[type="checkbox"]:checked ~ .rocket {
+      #go:checked ~ label .rocket {
+        animation-play-state: running;
+        transform: unset;
       }
 
       @keyframes fly {
@@ -65,10 +68,21 @@
         }
       }
     </style>
+    <!--  -->
+    <style>
+      /* */
+    </style>
   </head>
   <body>
-    <input type="checkbox" id="start-animation" />
-    <label for="start-animation">
+    <!-- <div>
+      <label for="toggle">Toggle</label>
+
+      <input type="checkbox" id="toggle" class="visually-hidden" />
+
+      <div class="control-me"></div>
+    </div> -->
+    <input type="checkbox" id="go" />
+    <label for="go">
       <div class="scene">
         <div class="atmosphere"></div>
         <div class="ground"></div>
