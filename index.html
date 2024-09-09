@@ -11,6 +11,11 @@
         font-family: Arial, Helvetica, sans-serif;
       }
 
+      :root {
+        --countdown-max-font-size: 10em;
+      }
+
+      /* Scenery */
       label.scene {
         -webkit-tap-highlight-color: transparent;
         width: 100%;
@@ -26,19 +31,6 @@
 
       .atmosphere {
         height: 90%;
-        /* original */
-        /* background: linear-gradient(
-          180deg,
-          rgba(2, 0, 36, 1) 0%,
-          rgba(9, 9, 121, 1) 50%,
-          rgba(0, 212, 255, 1) 99%
-        ); */
-        /* stars */
-        /* background: radial-gradient(
-          ellipse at bottom,
-          #1b2735 0%,
-          #090a0f 100%
-        ); */
         background: radial-gradient(
           circle at 50% 100%,
           rgba(9, 9, 121, 1) 0%,
@@ -59,13 +51,16 @@
         text-shadow: 0 0 30px rgba(255, 255, 255, 1);
       }
 
-      #go {
+      /* Items */
+      #go,
+      .rocket,
+      .ufo,
+      .click-me,
+      .countdown {
         display: none;
       }
 
-      .rocket {
-        display: none;
-      }
+      /* 🚀 stuff */
       #go:checked ~ label .rocket {
         position: absolute;
         display: unset;
@@ -92,10 +87,7 @@
         }
       }
 
-      .ufo {
-        display: none;
-      }
-
+      /* 🛸 stuff */
       #go:checked ~ label .ufo {
         display: unset;
         position: absolute;
@@ -143,18 +135,19 @@
         }
       }
 
-      .click-me {
-        display: none;
-      }
+      /* Intro text */
       #go:not(:checked) ~ label .click-me {
-        display: flex;
         position: absolute;
         width: 100%;
-        font-size: 5em;
-        text-align: center;
-        top: 50%;
-        color: white;
+        height: 100%;
+
+        display: flex;
         justify-content: center;
+        align-items: center;
+
+        font-size: 5em;
+        color: white;
+
         animation: pulse-text 3s linear infinite;
         text-shadow: 0 0 0.25em rgba(255, 255, 255, 1);
       }
@@ -166,21 +159,21 @@
         }
       }
 
-      .countdown {
-        display: none;
-      }
-
+      /* Rocket Countdown */
       #go:checked ~ label .countdown {
-        display: unset;
         position: absolute;
-        left: 50%;
-        top: 50%;
-        color: white;
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
-      #go:checked ~ label .countdown::after {
+      #go:checked ~ label .countdown-text::after {
         animation: countdown 5s linear;
-        font-size: 0.1em;
+        font-size: 5em;
+        color: white;
         content: " ";
       }
 
@@ -192,7 +185,7 @@
         }
         10% {
           content: "5";
-          font-size: 5em;
+          font-size: var(--countdown-max-font-size);
           text-shadow: 0 0 1em white;
         }
         19.9% {
@@ -207,7 +200,7 @@
         }
         30% {
           content: "4";
-          font-size: 5em;
+          font-size: var(--countdown-max-font-size);
           text-shadow: 0 0 1em white;
         }
         39.9% {
@@ -222,7 +215,7 @@
         }
         50% {
           content: "3";
-          font-size: 5em;
+          font-size: var(--countdown-max-font-size);
           text-shadow: 0 0 1em white;
         }
         59.9% {
@@ -237,7 +230,7 @@
         }
         70% {
           content: "2";
-          font-size: 5em;
+          font-size: var(--countdown-max-font-size);
           text-shadow: 0 0 1em white;
         }
         79.9% {
@@ -252,7 +245,7 @@
         }
         90% {
           content: "1";
-          font-size: 5em;
+          font-size: var(--countdown-max-font-size);
           text-shadow: 0 0 1em white;
         }
         99.9% {
@@ -272,16 +265,20 @@
     <input type="checkbox" id="go" />
     <label class="scene" for="go">
       <div class="atmosphere">
-        <div class="ufo">🛸</div>
-        <div class="moon">🌕</div>
         <div class="stars"></div>
-        <div class="countdown"></div>
-        <div class="click-me">
-          <div>Tap to Launch</div>
-        </div>
       </div>
       <div class="ground"></div>
+      <!-- scene items -->
+      <div class="ufo">🛸</div>
+      <div class="moon">🌕</div>
       <div class="rocket">🚀</div>
+      <!-- addition scene text -->
+      <div class="click-me">
+        <div>Tap to Launch</div>
+      </div>
+      <div class="countdown">
+        <div class="countdown-text"></div>
+      </div>
     </label>
     <style>
       @keyframes animStar {
