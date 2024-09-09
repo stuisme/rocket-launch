@@ -16,6 +16,7 @@
         --coutdown-duration: 5s;
 
         --moon-font-size: 6em;
+        --moon-max-font-size: 8em;
 
         --ufo-font-size: 5em;
         --ufo-flyby-duration: 4s;
@@ -110,7 +111,22 @@
         bottom: 80%;
         left: 75%;
         font-size: var(--moon-font-size);
-        text-shadow: 0 0 30px rgba(255, 255, 255, 1);
+        text-shadow: 0 0 0.25em rgba(255, 255, 255, 1);
+      }
+
+      #go:checked ~ label .moon {
+        animation: moon-launch linear forwards;
+        animation-duration: var(--rocket-offscreen-duration);
+        animation-delay: calc(
+          var(--coutdown-duration) + var(--rocket-launch-duration)
+        );
+      }
+
+      @keyframes moon-launch {
+        100% {
+          font-size: var(--moon-max-font-size);
+          text-shadow: 0 0 1em rgba(255, 255, 255, 1);
+        }
       }
 
       /* Items */
@@ -127,7 +143,7 @@
       #go:checked ~ label .ufo {
         display: unset;
         position: absolute;
-        bottom: 80%;
+        bottom: 65%;
         left: -5em;
 
         animation: ufo-flyby var(--ufo-flyby-duration) ease-in forwards;
@@ -138,8 +154,7 @@
       @keyframes ufo-flyby {
         50% {
           left: 40%;
-          bottom: 80%;
-          font-size: var(--ufo-font-size);
+          bottom: 70%;
           transform: rotate(15deg);
         }
         60% {
