@@ -102,12 +102,44 @@
         font-size: 2em;
         top: calc(10% + 2em);
         left: -5em;
-        animation: ufo-flyby 4s linear forwards;
+        animation: ufo-flyby 4s ease-in forwards;
       }
 
       @keyframes ufo-flyby {
+        50% {
+          left: 40%;
+          top: calc(10% + 2em);
+          transform: rotate(15deg);
+        }
+        60% {
+          left: 40%;
+          transform: rotate(-15deg);
+        }
+        65% {
+          left: 40%;
+          transform: rotate(15deg);
+        }
+        70% {
+          left: 40%;
+          transform: rotate(-15deg);
+        }
+        80% {
+          left: 40%;
+          transform: rotate(15deg);
+        }
+        85% {
+          left: 40%;
+          transform: rotate(-15deg);
+        }
+        90% {
+          left: 40%;
+          transform: rotate(0deg);
+          top: calc(10% + 2em);
+        }
         100% {
-          left: calc(100% + 5em);
+          transform: rotate(0deg);
+          left: -4em;
+          top: -10%;
         }
       }
 
