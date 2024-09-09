@@ -94,11 +94,27 @@
         display: none;
       }
       #go:not(:checked) ~ label .click-me {
-        display: unset;
+        display: flex;
         position: absolute;
-        left: 50%;
+        width: 100%;
+        font-size: 2em;
+        text-align: center;
         top: 50%;
         color: white;
+        justify-content: center;
+        animation: pulse-text 2s linear infinite;
+      }
+
+      @keyframes pulse-text {
+        0% {
+          text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+        }
+        50% {
+          text-shadow: 0 0 30px rgba(255, 255, 255, 1);
+        }
+        100% {
+          text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+        }
       }
 
       .countdown {
@@ -195,7 +211,9 @@
         <div class="moon">🌕</div>
         <div class="stars"></div>
         <div class="countdown"></div>
-        <div class="click-me">Click to Lanuch</div>
+        <div class="click-me">
+          <div>Tap to Lanuch</div>
+        </div>
       </div>
       <div class="ground"></div>
       <div class="rocket">🚀</div>
