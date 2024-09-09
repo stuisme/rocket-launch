@@ -92,6 +92,25 @@
         }
       }
 
+      .ufo {
+        display: none;
+      }
+
+      #go:checked ~ label .ufo {
+        display: unset;
+        position: absolute;
+        font-size: 2em;
+        top: calc(10% + 2em);
+        left: -5em;
+        animation: ufo-flyby 4s linear forwards;
+      }
+
+      @keyframes ufo-flyby {
+        100% {
+          left: calc(100% + 5em);
+        }
+      }
+
       .click-me {
         display: none;
       }
@@ -104,19 +123,14 @@
         top: 50%;
         color: white;
         justify-content: center;
-        animation: pulse-text 2s linear infinite;
+        animation: pulse-text 3s linear infinite;
+        text-shadow: 0 0 0.25em rgba(255, 255, 255, 1);
       }
 
       @keyframes pulse-text {
-        0% {
-          text-shadow: 0 0 0.5em rgba(255, 255, 255, 1);
-        }
         50% {
           transform: translateX(-0.25em) translateY(-0.25em);
           text-shadow: 1em 1em 1em rgba(255, 255, 255, 1);
-        }
-        100% {
-          text-shadow: 0 0 0.5em rgba(255, 255, 255, 1);
         }
       }
 
@@ -226,6 +240,7 @@
     <input type="checkbox" id="go" />
     <label class="scene" for="go">
       <div class="atmosphere">
+        <div class="ufo">🛸</div>
         <div class="moon">🌕</div>
         <div class="stars"></div>
         <div class="countdown"></div>
