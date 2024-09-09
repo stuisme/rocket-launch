@@ -55,7 +55,7 @@
         position: absolute;
         top: 10%;
         left: 75%;
-        font-size: 5em;
+        font-size: 6em;
         text-shadow: 0 0 30px rgba(255, 255, 255, 1);
       }
 
@@ -69,17 +69,18 @@
       #go:checked ~ label .rocket {
         position: absolute;
         display: unset;
-        font-size: 5em;
-        bottom: 20px;
-        left: 50%;
-        transform: rotate(-45deg);
         animation: fly 5s ease-in forwards;
         animation-delay: 5s;
+
+        font-size: 7em;
+        left: 50%;
+        transform: rotate(-45deg);
+        bottom: 5%;
       }
 
       @keyframes fly {
         0% {
-          bottom: 20px;
+          bottom: 5%;
           left: 50%;
           transform: rotate(-45deg);
         }
@@ -87,7 +88,7 @@
           bottom: 100%;
           left: 65%;
           transform: rotate(-40deg);
-          font-size: 3em;
+          font-size: 4em;
         }
       }
 
@@ -98,7 +99,7 @@
         display: flex;
         position: absolute;
         width: 100%;
-        font-size: 2em;
+        font-size: 5em;
         text-align: center;
         top: 50%;
         color: white;
@@ -108,13 +109,14 @@
 
       @keyframes pulse-text {
         0% {
-          text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+          text-shadow: 0 0 0.5em rgba(255, 255, 255, 1);
         }
         50% {
-          text-shadow: 0 0 30px rgba(255, 255, 255, 1);
+          transform: translateX(-0.25em) translateY(-0.25em);
+          text-shadow: 1em 1em 1em rgba(255, 255, 255, 1);
         }
         100% {
-          text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+          text-shadow: 0 0 0.5em rgba(255, 255, 255, 1);
         }
       }
 
@@ -127,7 +129,7 @@
         position: absolute;
         left: 50%;
         top: 50%;
-        color: red;
+        color: white;
       }
 
       #go:checked ~ label .countdown::after {
@@ -140,62 +142,77 @@
         0% {
           content: "5";
           font-size: 0.1em;
+          text-shadow: 0 0 0.1em white;
         }
         10% {
           content: "5";
-          font-size: 3em;
+          font-size: 5em;
+          text-shadow: 0 0 1em white;
         }
         19.9% {
           content: "5";
           font-size: 0.1em;
+          text-shadow: 0 0 0.1em white;
         }
         20% {
           content: "4";
           font-size: 0.1em;
+          text-shadow: 0 0 0.1em white;
         }
         30% {
           content: "4";
-          font-size: 3em;
+          font-size: 5em;
+          text-shadow: 0 0 1em white;
         }
         39.9% {
           content: "4";
           font-size: 0.1em;
+          text-shadow: 0 0 0.1em white;
         }
         40% {
           content: "3";
           font-size: 0.1em;
+          text-shadow: 0 0 0.1em white;
         }
         50% {
           content: "3";
-          font-size: 3em;
+          font-size: 5em;
+          text-shadow: 0 0 1em white;
         }
         59.9% {
           content: "3";
           font-size: 0.1em;
+          text-shadow: 0 0 0.1em white;
         }
         60% {
           content: "2";
           font-size: 0.1em;
+          text-shadow: 0 0 0.1em white;
         }
         70% {
           content: "2";
-          font-size: 3em;
+          font-size: 5em;
+          text-shadow: 0 0 1em white;
         }
         79.9% {
           content: "2";
           font-size: 0.1em;
+          text-shadow: 0 0 0.1em white;
         }
         80% {
           content: "1";
           font-size: 0.1em;
+          text-shadow: 0 0 0.1em white;
         }
         90% {
           content: "1";
-          font-size: 3em;
+          font-size: 5em;
+          text-shadow: 0 0 1em white;
         }
         99.9% {
           content: "1";
           font-size: 0.1em;
+          text-shadow: 0 0 0.1em white;
         }
         100% {
           font-size: 0.1em;
