@@ -13,6 +13,12 @@
 
       :root {
         --countdown-max-font-size: 10em;
+
+        --ufo-font-size: 5em;
+        --moon-font-size: 6em;
+
+        --rocket-straight-angle: -45deg;
+        --rocket-exit-angle: -40deg;
       }
 
       /* Scenery */
@@ -45,9 +51,9 @@
       }
       .moon {
         position: absolute;
-        top: 10%;
+        bottom: 80%;
         left: 75%;
-        font-size: 6em;
+        font-size: var(--moon-font-size);
         text-shadow: 0 0 30px rgba(255, 255, 255, 1);
       }
 
@@ -56,51 +62,28 @@
       .rocket,
       .ufo,
       .click-me,
-      .countdown {
+      .countdown,
+      .the-end {
         display: none;
-      }
-
-      /* 🚀 stuff */
-      #go:checked ~ label .rocket {
-        position: absolute;
-        display: unset;
-        animation: fly 5s ease-in forwards;
-        animation-delay: 5s;
-
-        font-size: 7em;
-        left: 50%;
-        transform: rotate(-45deg);
-        bottom: 5%;
-      }
-
-      @keyframes fly {
-        0% {
-          bottom: 5%;
-          left: 50%;
-          transform: rotate(-45deg);
-        }
-        100% {
-          bottom: 100%;
-          left: 65%;
-          transform: rotate(-40deg);
-          font-size: 4em;
-        }
       }
 
       /* 🛸 stuff */
       #go:checked ~ label .ufo {
         display: unset;
         position: absolute;
-        font-size: 4em;
-        top: 10%;
+        bottom: 80%;
         left: -5em;
+
         animation: ufo-flyby 4s ease-in forwards;
+
+        font-size: var(--ufo-font-size);
       }
 
       @keyframes ufo-flyby {
         50% {
           left: 40%;
-          top: 10%;
+          bottom: 80%;
+          font-size: var(--ufo-font-size);
           transform: rotate(15deg);
         }
         60% {
@@ -126,13 +109,76 @@
         90% {
           left: 40%;
           transform: rotate(0deg);
-          top: 10%;
+          bottom: 80%;
+          font-size: var(--ufo-font-size);
         }
         100% {
           transform: rotate(0deg);
+          font-size: 0.25em;
           left: -4em;
-          top: -10%;
+          bottom: 110%;
         }
+      }
+
+      /* 🚀 stuff */
+      #go:checked ~ label .rocket {
+        display: unset;
+
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+
+        animation: fly 5s ease-in forwards, land-on-moon 3s forwards;
+        animation-delay: 5s, 10.5s;
+
+        font-size: 7em;
+        transform: rotate(var(--rocket-straight-angle));
+      }
+
+      @keyframes fly {
+        0% {
+          bottom: 5%;
+          left: 50%;
+          transform: rotate(var(--rocket-straight-angle));
+        }
+        100% {
+          bottom: 100%;
+          left: 65%;
+          transform: rotate(var(--rocket-exit-angle));
+          font-size: 4em;
+        }
+      }
+
+      @keyframes land-on-moon {
+        0% {
+          font-size: 2em;
+          bottom: 100%;
+          left: 72%;
+          transform: rotate(var(--rocket-straight-angle));
+        }
+        100% {
+          animation-timing-function: ease-out;
+          font-size: 1.75em;
+          bottom: calc((80%) + (var(--moon-font-size) / 2));
+          left: calc((75%) + var(--moon-font-size) * 0.25);
+          transform: rotate(var(--rocket-straight-angle));
+        }
+
+        /* 80% {
+          animation-timing-function: ease-in;
+          font-size: 1.75em;
+          bottom: calc((80%) + (var(--moon-font-size) / 2));
+          left: calc((75%) + var(--moon-font-size) * 0.25);
+          transform: rotate(var(--rocket-straight-angle));
+        }
+
+        100% {
+          animation-timing-function: ease-in;
+          font-size: 2em;
+          bottom: 100%;
+          left: 76%;
+          transform: rotate(-47deg);
+        } */
       }
 
       /* Intro text */
@@ -259,6 +305,40 @@
           content: " ";
         }
       }
+
+      /* the end */
+      #go:checked ~ label .the-end {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        text-transform: uppercase;
+
+        animation: end-text-animation 3s linear forwards;
+        animation-delay: 15s;
+
+        font-size: 0.1em;
+        color: transparent;
+      }
+
+      @keyframes end-text-animation {
+        0% {
+          color: transparent;
+        }
+        1% {
+          color: white;
+        }
+
+        100% {
+          font-size: 5em;
+          color: white;
+          text-shadow: 1em 1em 1em rgba(255, 255, 255, 1);
+        }
+      }
     </style>
   </head>
   <body>
@@ -278,6 +358,9 @@
       </div>
       <div class="countdown">
         <div class="countdown-text"></div>
+      </div>
+      <div class="the-end">
+        <div>To The Moon</div>
       </div>
     </label>
     <style>
