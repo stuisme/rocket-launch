@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- "Reach for the moon, even if you miss, you'll land among the stars." - W. Clement Stone -->
 <html>
   <head>
     <title>🚀</title>
@@ -32,9 +33,12 @@
             var(--rocket-offscreen-duration)
         );
 
-        --ending-zoom-duration: 5s;
+        --ending-zoom-duration: 3s;
         --ending-delay: calc(
           var(--rocket-landing-duration) + var(--rocket-landing-delay)
+        );
+        --ending-text-swap-delay: calc(
+          var(--ending-delay) + var(--ending-zoom-duration) + 1.5s
         );
       }
 
@@ -215,7 +219,7 @@
         }
         100% {
           animation-timing-function: cubic-bezier(0.64, 0.15, 0.96, 0.66);
-          bottom: 100%;
+          bottom: calc(100% + 4em);
           left: 65%;
           transform: rotate(var(--rocket-exit-angle));
           font-size: 4em;
@@ -372,6 +376,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: center;
 
         text-transform: uppercase;
 
@@ -392,11 +397,86 @@
         }
 
         100% {
-          font-size: 5em;
+          font-size: 3em;
           color: white;
           text-shadow: 1em 1em 1em rgba(255, 255, 255, 1);
         }
       }
+
+      .the-end-text::after {
+        content: "Reach for the moon";
+        white-space: pre-line;
+        animation: the-end-text-animation linear forwards 12s;
+        animation-delay: var(--ending-text-swap-delay);
+      }
+
+      /* Reach for the moon, even if you miss, you'll land among the stars. */
+      @keyframes the-end-text-animation {
+        0% {
+          opacity: 1;
+          content: "Reach for the moon";
+        }
+        10% {
+          opacity: 0;
+          content: "Reach for the moon";
+        }
+
+        11% {
+          opacity: 0;
+          content: "even if you miss";
+        }
+        25% {
+          opacity: 1;
+          content: "even if you miss";
+        }
+        40% {
+          opacity: 0;
+          content: "even if you miss";
+        }
+
+        41% {
+          opacity: 0;
+          content: "you'll land among the stars";
+        }
+        55% {
+          opacity: 1;
+          content: "you'll land among the stars";
+        }
+        65% {
+          opacity: 0;
+          content: "you'll land among the stars";
+        }
+
+        66% {
+          opacity: 0;
+          content: "Launch Rocket #win";
+        }
+        100% {
+          opacity: 1;
+          content: "Launch Rocket #win";
+        }
+      }
+
+      /* .the-end-text-2 {
+        opacity: 0;
+        display: none;
+        animation: the-end-text-2-fade 2s linear forwards;
+        animation-delay: var(--ending-text-swap-delay);
+      }
+
+      @keyframes the-end-text-2-fade {
+        from {
+          opacity: 0;
+        }
+        1% {
+          opacity: 0;
+          display: block;
+        }
+        to {
+          opacity: 1;
+          display: block;
+        }
+      } */
     </style>
   </head>
   <body>
@@ -418,7 +498,12 @@
         <div class="countdown-text"></div>
       </div>
       <div class="the-end">
-        <div>To The Moon</div>
+        <div class="the-end-text"></div>
+        <!-- <div class="the-end-text-2">
+          Launch<br />
+          Rocket<br />
+          #Win
+        </div> -->
       </div>
     </label>
     <style>
@@ -435,6 +520,7 @@
         width: 1px;
         height: 1px;
         background: transparent;
+        animation: animStar 45s linear infinite;
         box-shadow: 5100px 17397px #fff, 2731px 52px #fff, 3404px 1277px #fff,
           2378px 1670px #fff, 2194px 1744px #fff, 2809px 1499px #fff,
           3067px 655px #fff, 4440px 1052px #fff, 2954px 1103px #fff,
@@ -769,7 +855,6 @@
           1534px 508px #fff, 3223px 393px #fff, 949px 1161px #fff,
           1508px 953px #fff, 2050px 86px #fff, 4459px 1002px #fff,
           5471px 946px #fff;
-        animation: animStar 50s linear infinite;
       }
       .stars:after {
         content: " ";
