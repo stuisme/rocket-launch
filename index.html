@@ -17,7 +17,7 @@
         --coutdown-duration: 5s;
 
         --moon-font-size: 6em;
-        --moon-max-font-size: 8em;
+        --moon-max-font-size: 9em;
 
         --ufo-font-size: 5em;
         --ufo-flyby-duration: 4s;
@@ -33,12 +33,12 @@
             var(--rocket-offscreen-duration)
         );
 
-        --ending-zoom-duration: 3s;
+        --ending-zoom-duration: 2.5s;
         --ending-delay: calc(
           var(--rocket-landing-duration) + var(--rocket-landing-delay)
         );
         --ending-text-swap-delay: calc(
-          var(--ending-delay) + var(--ending-zoom-duration) + 1.5s
+          var(--ending-delay) + var(--ending-zoom-duration) + 1s
         );
       }
 
@@ -228,7 +228,7 @@
 
       @keyframes land-on-moon {
         0% {
-          font-size: 2em;
+          font-size: 2.5em;
           bottom: 100%;
           left: 72%;
           transform: rotate(var(--rocket-straight-angle));
@@ -425,6 +425,10 @@
           opacity: 0;
           content: "even if you miss";
         }
+        18% {
+          opacity: 1;
+          content: "even if you miss";
+        }
         25% {
           opacity: 1;
           content: "even if you miss";
@@ -436,6 +440,10 @@
 
         41% {
           opacity: 0;
+          content: "you'll land among the stars";
+        }
+        48% {
+          opacity: 1;
           content: "you'll land among the stars";
         }
         55% {
